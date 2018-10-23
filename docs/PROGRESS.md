@@ -4,3 +4,6 @@ So far I have acquired a Raspberry Pi B+ and have installed Raspbian successfull
 ![email](https://user-images.githubusercontent.com/43853823/47387152-0c3a8880-d6fe-11e8-9f10-8310a742f904.png)
 For the time being I will be writting the application for the target ARM platform and analyzing the communications using an oscilloscope. If the breakout board does not become available in the near future I will have to either order the gyroscope standalone and build the breakout board, or use a similar sensor breakout board that's available.
 No additional expenses have been required for the construction of this project. So far all material used were acquired some time before the project's inception.
+
+## Date: October 16, 2018
+The Raspbian distribution for the Raspberry Pi has been successfully flashed to the target SD. Intially I experienced issues with the SSH server's configuration file. Since the configuration file was modified incorrectly when the service was tasked to reload it failed to start, even when enabled to boot during startup.
