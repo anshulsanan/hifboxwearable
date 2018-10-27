@@ -14,6 +14,6 @@ In order to interface with the sensor I will be using the Raspberry Pi B+, a sma
 
 ## The Sensor
 ![Image of NXP 9-DOF Breakout Board](https://user-images.githubusercontent.com/43853823/47609574-7a898e80-da0f-11e8-8cb0-d7fec0fdcf10.png)
-The sensor for this project is the [FXAS21002 3-Axis gyroscope](https://cache.freescale.com/files/sensors/doc/data_sheet/FXAS21002.pdf) and is part of the [Freescale Freedom 9-axis Sensor Toolbox Development Board](http://cache.freescale.com/files/sensors/doc/support_info/FRDM-STBC-AGM01-QRC.pdf).
-This breakout board also features a [FXOS8700 3-Axis accelerometer and 3-Axis magnetometer](https://www.nxp.com/applications/solutions/internet-of-things/smart-things/healthcare/hearing-aids/digital-motion-sensor-3d-accelerometer-2g-4g-8g-plus-3d-magnetometer:FXOS8700CQ).
+
+The sensor for this project is the [FXAS21002 3-Axis gyroscope](https://cache.freescale.com/files/sensors/doc/data_sheet/FXAS21002.pdf) and is part of the [Freescale Freedom 9-axis Sensor Toolbox Development Board](http://cache.freescale.com/files/sensors/doc/support_info/FRDM-STBC-AGM01-QRC.pdf). This breakout board also features a [FXOS8700 3-Axis accelerometer and 3-Axis magnetometer](https://www.nxp.com/applications/solutions/internet-of-things/smart-things/healthcare/hearing-aids/digital-motion-sensor-3d-accelerometer-2g-4g-8g-plus-3d-magnetometer:FXOS8700CQ).
 
