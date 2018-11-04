@@ -1,4 +1,9 @@
 # Progress
+## Date: November 04, 2018
+![fritzimage_schem](https://user-images.githubusercontent.com/43853823/47970091-c6ab8300-e04e-11e8-9fb5-d1d054d36639.png) 
+
+The schematic for the interface board has been sketched and sent to the prototyping lab to be printed. The development board I will be creating a interface board the resembles the Arduino Uno R3. This design choice was made in order to follow the natural layout of the development board.
+
 ## Date: October 30, 2018
 The development board has arrived in the mail. The board unfortunately doesn't include detailed instructions or documentation and relies on the datasheets for the [FXAS21002 3-Axis gyroscope](https://cache.freescale.com/files/sensors/doc/data_sheet/FXAS21002.pdf) and [FXOS8700 3-Axis accelerometer and 3-Axis magnetometer](https://www.nxp.com/applications/solutions/internet-of-things/smart-things/healthcare/hearing-aids/digital-motion-sensor-3d-accelerometer-2g-4g-8g-plus-3d-magnetometer:FXOS8700CQ). I was successfully able to connect to the board, however the I2C address for the gyroscope is slightly off. The I2C interface can be configured to use address 0x20 or 0x21 depending on the voltage supplied to pin 8 of the FXAS21002 and the SA0 MISO pin. For my sensor I will have to route an external connection to the 3.3V source to use address 0x21. The interface board for this sensor can be similar to the bridge used on the Raspberry Pi B+ to Arduino Uno R3 because the pinout for the sensor development board is compatible with the Arduino Uno R3. No additional expenses have been added to the total cost of this board.
 
