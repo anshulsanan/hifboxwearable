@@ -1,4 +1,9 @@
 # Progress
+## Date: November 15, 2018
+The prototyping board is in working order, however not without several hiccups along the way. At the moment the Raspberry Pi can read and display the data from the sensor board without any issues. A Python script was used with a modified version of Adafruits CircuitPython library to facilitate reading the raw values.
+
+It took two attempts to create a working PCB board. In my first attempt I had incorrectly designed the PCB by not including vias to route the copper traces to one side of the headers. Another quirk of the first PCB was broken copper joints on most of the traces. It is speculated that a bug in Fritzing is responsible for generating Gerber files with broken trace joints.
+
 ## Date: November 04, 2018
 ![fritzimage_schem](https://user-images.githubusercontent.com/43853823/47970091-c6ab8300-e04e-11e8-9fb5-d1d054d36639.png) 
 
