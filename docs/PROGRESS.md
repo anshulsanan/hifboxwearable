@@ -1,8 +1,16 @@
 # Progress
 ## Date: November 15, 2018
-The prototyping board is in working order, however not without several hiccups along the way. At the moment the Raspberry Pi can read and display the data from the sensor board without any issues. A Python script was used with a modified version of Adafruits CircuitPython library to facilitate reading the raw values.
+The prototyping board is in working order, however not without several hiccups along the way. At the moment the Raspberry Pi can read and display the data from the sensor board without any issues. 
 
-It took two attempts to create a working PCB board. In my first attempt I had incorrectly designed the PCB by not including vias to route the copper traces to one side of the headers. Another quirk of the first PCB was broken copper joints on most of the traces. It is speculated that a bug in Fritzing is responsible for generating Gerber files with broken trace joints.
+![demo](https://user-images.githubusercontent.com/43853823/48652144-fdc55100-e9cb-11e8-81e0-1c522f582454.png)
+
+A Python script was used with a modified version of Adafruits CircuitPython library to facilitate reading the raw values.
+
+It took two attempts to create a working PCB board. In my first attempt I had incorrectly designed the PCB by not including vias to route the copper traces to one side of the headers. This resulted in the traces which were disconnected from the headers. Another quirk of the first PCB was broken copper joints on most of the traces. It is speculated that a bug in Fritzing is responsible for generating Gerber files with broken trace joints.
+
+The second PCB did not have any manufacturing issues, however during the soldering process I had removed the copper traces where the pin headers were supposed to go. To remedy this issue I simply ran soldering from the header pin to the end of the copper trace.
+
+![stackednocase](https://user-images.githubusercontent.com/43853823/48652090-c6ef3b00-e9cb-11e8-9239-3a9147fd1ef0.jpg)
 
 ## Date: November 04, 2018
 ![fritzimage_schem](https://user-images.githubusercontent.com/43853823/47970091-c6ab8300-e04e-11e8-9fb5-d1d054d36639.png) 
