@@ -6,15 +6,36 @@ This is the project page for the "Help, I've Fallen" (HIF) Box Wearable. This re
 ## Disclaimer
 This project is an academic proof of concept and should not be used in professional settings. The maintainer or contributors of this project do not accept responsibility for any injury that this device inflicts on end users. 
 
-## Objectives
-For this hardware project I will attempt to successfully read values from the target gyroscope sensor using a Raspberry Pi B+. In order to retrieve information from the sensor in a timely fashion the Raspberry Pi will retrieve raw data using an I2C serial connection. Once the values are read into the Raspberry Pi, a C program running locally will display the values for the user. The program will also display the readout graphically should the user choose to.  
+# Build Instructions
+The sections below describe the build instructions I followed in order to have a working wearable prototype for demo purposes. I will do my best to outline the instructions I followed and some of the general concepts behind the choices I made. Some of the instructions I mention may not work for you and I that is the case the reference materials mentioned at the bottom of the section should point you in the right direction.
 
-## Hardware Platform
-In order to interface with the sensor I will be using the Raspberry Pi B+, a small credit card-sized, ARM-based computing platform that is loaded with Raspbian. Raspbian is a distribution based off of Debian GNU/Linux which features additional blobs required to make use of the on-board FPU. The Raspberry Pi features a 40-pin GPIO header and the ability to communicate with external serial capable devices. Serial protocols supported by the Raspberry Pi B+ are I2C, SPI, and UART.
+## 1. Prerequisites and scope
+### Objectives
+This prototype will allow you to successfully read values from the target gyroscope sensor using a Raspberry Pi B+. In order to retrieve information from the sensor in a timely fashion the Raspberry Pi will retrieve raw data using an I2C serial connection. Once the values are read into the Raspberry Pi, a C program running locally will display the values for the user.
 
-## The Sensor
+### Hardware Platform
+In order to interface with the sensor I will be using the Raspberry Pi B+, a small credit card-sized, ARM-based computing platform that is loaded with Raspbian. Raspbian is a distribution based off of Debian GNU/Linux which features additional blobs required to make use of the on-board FPU. The Raspberry Pi features a 40-pin GPIO header and the ability to communicate with external serial capable devices. Serial protocols supported by the Raspberry Pi B+ are I2C, SPI, and UART. If you choose to use a different Raspberry Pi version check the associated documentation to ensure compatability.
+
+### The Sensor
 ![Image of NXP 9-DOF Breakout Board](https://user-images.githubusercontent.com/43853823/47609574-7a898e80-da0f-11e8-8cb0-d7fec0fdcf10.png)
 
 The sensor for this project is the [FXAS21002 3-Axis gyroscope](https://cache.freescale.com/files/sensors/doc/data_sheet/FXAS21002.pdf) and is part of the [Freescale Freedom 9-axis Sensor Toolbox Development Board](http://cache.freescale.com/files/sensors/doc/support_info/FRDM-STBC-AGM01-QRC.pdf). This breakout board also features a [FXOS8700 3-Axis accelerometer and 3-Axis magnetometer](https://www.nxp.com/applications/solutions/internet-of-things/smart-things/healthcare/hearing-aids/digital-motion-sensor-3d-accelerometer-2g-4g-8g-plus-3d-magnetometer:FXOS8700CQ).
 
 This development board is built around the [BRKT-STBC-AMG01](http://cache.freescale.com/files/sensors/doc/support_info/BRKT-STBC-AGM01-QRC.pdf) breakout board. More information about this breakout board can be found [here](https://www.nxp.com/downloads/en/schematics/BRKT-STBC-AGM01-SCH.pdf).
+
+## 2. Raspberry Pi Setup & Configuration
+In order to obtain the ability to have a program run on the Raspberry Pi we will need to image the Raspberry Pi with the latest version of Raspbian. Raspbian can be obtained at the official [Raspberry Pi website](https://www.raspberrypi.org/downloads/raspbian/). Once downloaded you will need to unzip the ".img" file into a directory and write the contents of the file to your target SD card. There are several methods for imaging the SD card depending on the OS you are using.
+
+### *NIX Setup
+
+### Windows Setup
+
+### SSH configuration
+
+## 3. Networking configuration
+
+## 4. PCB Setup
+
+## 5. PCB Soldering 
+
+## 6. I2C programming
