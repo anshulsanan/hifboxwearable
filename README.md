@@ -38,9 +38,15 @@ In order to clear any existing partitions we will use DISKPART, a disk managemen
 
 You can now write the image file to the SD card by opening "Win32DiskImager", selecting the correct device volume letter, the Raspbian image file, and clicking "Write" to start the write process. Once this has completed successfully a dialog notifying you of the successful write will appear, otherwise a dialog outlining the failure will interrupt the write process. You should now have a SD card with the Raspbian filesystem setup. Next we will be configuring SSH so that it is available on boot. 
 
-### SSH configuration
+## SSH Configuration
+In order to have the SSH server accesible from the first boot you will need to make a small configuration to SD card. According to the Raspbian documentation SSH is disabled by default to mitigate the attack surface on the Raspberry Pi. To enable SSH you will need to create an empty file with no file extension called "ssh" on the root of the boot partition. This partition is available on both \*NIX based and Windows systems. Be extra careful when creating the file to not accidentally append a file extension as this will cause the SSH to not appear.
 
-## 3. Networking configuration
+## 3. Networking Configuration
+For this project I had the Raspberry Pi B+ which happens to not have any builtin wireless capabilities. I could have used a wireless USB NIC to allow for network communications between the Internet and Ethernet for my controlling PC, however a more elegant solution exists. In order to have a working Internet connection on the Rasberry Pi I created a bridged connection to the interface on my controlling PC that has an active Internet connection was made. The following sections below will show two possible methods for configuring this type of networking on systems with NetworkManager and Windows machines.
+
+### \*NIX Networking
+
+### Windows Networking
 
 ## 4. PCB Setup
 
