@@ -26,9 +26,17 @@ This development board is built around the [BRKT-STBC-AMG01](http://cache.freesc
 ## 2. Raspberry Pi Setup & Configuration
 In order to obtain the ability to have a program run on the Raspberry Pi we will need to image the Raspberry Pi with the latest version of Raspbian. Raspbian can be obtained at the official [Raspberry Pi website](https://www.raspberrypi.org/downloads/raspbian/). Once downloaded you will need to unzip the ".img" file into a directory and write the contents of the file to your target SD card. There are several methods for imaging the SD card depending on the OS you are using.
 
-### *NIX Setup
+### \*NIX Setup
+On UNIX systems with GNU coreutils installed you can use the "dd" utility to write the contents of the Raspbian img file to your target SD card. Once you have downloaded the image to you local filesystem you can use the "dd" utility in a terminal emulator as follows: dd if=<Raspbian image file> of=<SD card block device> bs=512 oflag=sync status=progress. If executed with the appropriate privileges and correct arguments the filesystem image from the Raspbian image file should start writing to the SD card. If something goes wrong "dd" should return the error to you. Note: if you don't add the "status=progress" flag no status output will return to the controlling terminal until execution has completed. You may also have to adjust the "bs" flag to match the I/O block size of your SD card.
+
+After the utility has finished writing the contents of the image file to your SD card it should display the number of bytes written to the SD card. Next we will configure the SD card to allow SSH to be enabled by default.
 
 ### Windows Setup
+Windows systems do not come equipped with file copy tool equivalent to "dd", so in order to write the contents of the Raspbian image file to the SD card you will need to download and install a third-party tool called "Win32DiskImager" from here. Once the tool is installed you will need to ensure that the SD card does not have any existing partitions.
+
+In order to clear any existing partitions we will use DISKPART, a disk management tool available on all modern Windows systems. To use DISKPART you will need to open "Command Prompt" as Administrator. Once "Command Prompt" type in "diskpart" and wait until it has opened. Once opened you will need to select the SD card from the list of devices. After the correct device has been selected type in "clean" to wipe the partition header on the SD card.
+
+You can now write the image file to the SD card by opening "Win32DiskImager", selecting the correct device volume letter, the Raspbian image file, and clicking "Write" to start the write process. Once this has completed successfully a dialog notifying you of the successful write will appear, otherwise a dialog outlining the failure will interrupt the write process. You should now have a SD card with the Raspbian filesystem setup. Next we will be configuring SSH so that it is available on boot. 
 
 ### SSH configuration
 
