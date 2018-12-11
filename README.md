@@ -150,3 +150,5 @@ to
 This change is necessary because the sensor board's I2C address defaults to 0x20 and making a change to the hardware to switch this address is very difficult with this board's schematic. More information about this module can be found in the documentation located [here](https://circuitpython.readthedocs.io/projects/fxas21002c/en/latest/).
 
 With that change made you can now set the file to have executable permissions by using the command ```chmod u+x fxas21002c_simpletest.py```. Now if you type in ```./fxas21002c_simpletest.py``` the script should begin to run and the values from the sensor will appear in the terminal screen.
+
+![demo](https://user-images.githubusercontent.com/43853823/48652144-fdc55100-e9cb-11e8-81e0-1c522f582454.png)
