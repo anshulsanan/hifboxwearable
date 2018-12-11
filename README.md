@@ -45,6 +45,7 @@ In order to have the SSH server accesible from the first boot you will need to m
 For this project I had the Raspberry Pi B+ which happens to not have any builtin wireless capabilities. I could have used a wireless USB NIC to allow for network communications between the Internet and Ethernet for my controlling PC, however a more elegant solution exists. In order to have a working Internet connection on the Rasberry Pi I created a bridged connection to the interface on my controlling PC that has an active Internet connection was made. The following sections below will show two possible methods for configuring this type of networking on systems with NetworkManager and Windows machines.
 
 ### \*NIX Networking
+NetworkManager is a service that can allow you to configure the network settings for a particular system. In order to allow the the Ethernet connection to the Raspberry Pi to bridge the connection to another interface that has Internet connectivity you will need to open the network settings and select the wired connection profile that will be used to connect to your Raspberry Pi. Once you have selected the profile go to the IPv4 settings tab and using the "Method" dropdown select "Shared to other computer". By default this setting will use the 10.0.0.0/16 address space. You will need to configure the Raspberry Pi to use an address on this same subnet to allow for easy communications.
 
 ### Windows Networking
 
