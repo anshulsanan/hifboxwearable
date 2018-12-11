@@ -103,6 +103,50 @@ If all goes well you should be greeted with an SSH fingerprint confirmation to w
 ## 4. PCB Setup
 The PCB for this project was designed by myself and the fabrication was outsourced to a local creation space for etching. I can't provide any specifics on the etching of the board, however using Fritzing file found under this project tree you can export the schematics in a Gerber format and from there send it to a local hackerspace or attempt to etch it yourself. This section will assume that you have had you board etched without any issues and instead will focus on the assembly of the components required to make a connection to the Raspberry Pi and the sensor board.
 
-### 5. PCB Soldering 
+### PCB Soldering
+There are two sections to solder on this board:
+
+1. The 40-pin Raspberry Pi Expansion Header
+1. The Arduino Uno Pin Header
+
+The 40-pin expansion header is fairly straight forward. Be sure to solder pins 1,3,5, and 9 to make the necessary connections between the two sections. I would also recommend solder pins 39 and 40 should you need to remove the board. This will mitigate the risk of cracking the joints accidentally when unmounting the board.
+
+The Arduino Uno header section will require that you find or create a pin header that matches the width. This is due to the awkward space disjoining the pinout on the Arduino Uno. I finessed my own header pins by taking a long set of pins and breaking them at the correct lengths.
+
+Once you have your own 40-pin expansion header and header pins you can solder them to your printed board. 
+**Note:** be sure to match the solder joints to the copper-lined side of your pin cutouts if your board doesn't have the copper lining the inside of the board cutout. Failing to do so will result in no connections made.
+
+After you have successfully soldered the expansion header and pin headers to your board you can now proceed to setup the I2C interface and execute a sample Python script to output values from the sensor.
 
 ## 6. I2C programming
+Final stretch! At this point you should have the completed PCB interface board, a network-enabled Raspberry Pi and machine to control the Raspberry Pi. Now it's time to enable the I2C interface on the Raspberry Pi, install the required Python3 modules, and run the demo script.
+
+### Enabling I2C
+To enable I2C on your Raspberry Pi you will need to go through the Raspberry Pi configuration tool. This tool can be access by typing in ```sudo raspi-config``` in the BASH prompt you acquired earlier. Moments later you should see a menu with several options available to you. Using the directional keys go to "Interfacing Options", press Enter, go down to I2C, and press Enter again. It will then prompt you with a confirmation that you can select "Yes" to. I2C communications will now be enabled over the GPIO pins. More information about this menus can be found [here](https://www.raspberrypi.org/documentation/configuration/raspi-config.md) and is part of the Raspberry Pi's core documentation.
+
+### Installing Python3 Modules
+The Python script we will be using later requires a module from Adafruit called CircuitPython. You can download this module manually from their [Github repo](https://github.com/adafruit/Adafruit_FXAS21002C) or use Python's pip to install it quickly. Pip may not be installed by default on some Linux distributions that ship with Python3 so you will have to install it yourself. Either install it manually or use your distribution's software repository.
+
+To install the module you will need a stable Internet connection that was established earlier in this build instructions. Assuming you have that setup properly you can run: 
+
+```
+pip3 install 
+```
+
+After this command successfully completes you should have the necessary libraries installed on the Raspberry Pi.
+
+### Download & Running The Python Script
+The only step left is to download the demo script, make a small change, and the run it using the Python3 interpreter. To download the script you can run the following command or open the [link](https://learn.adafruit.com/pages/10970/elements/2976734/download) in a browser:
+
+```
+curl -O https://learn.adafruit.com/pages/10970/elements/2976734/download
+```
+Now you will need to change the 13th line from: 
+
+```sensor = adafruit_fxas21002c.FXAS21002C(i2c)``` 
+to 
+```sensor = adafruit_fxas21002c.FXAS21002C(i2c,address=0x20)```
+
+This change is necessary because the sensor board defaults to 0x20 and making a change to the hardware to switch this address is very difficult with this board's schematic. More information about this module can be found in the documentation located [here](https://circuitpython.readthedocs.io/projects/fxas21002c/en/latest/).
+
+With that change made you can now set the file to have executable permissions by using the command ```chmod u+x fxas21002c_simpletest.py```. Now if you type in ```./fxas21002c_simpletest.py``` the script should begin to run and the values from the sensor will appear in the terminal screen.
