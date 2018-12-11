@@ -130,7 +130,7 @@ The Python script we will be using later requires a module from Adafruit called 
 To install the module you will need a stable Internet connection that was established earlier in this build instructions. Assuming you have that setup properly you can run: 
 
 ```
-pip3 install 
+pip3 install wiringpi setuptools spidev adafruit-circuitpython-fxas21002c RPi.GPIO
 ```
 
 After this command successfully completes you should have the necessary libraries installed on the Raspberry Pi.
