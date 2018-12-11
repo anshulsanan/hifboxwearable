@@ -66,17 +66,43 @@ The machine you're using to connect the Raspberry Pi should now be able to conne
 ### Scanning for The Raspberry Pi
 To scan for the Raspberry Pi we will be using "nmap". Nmap can be obtained from [here](https://nmap.org/download.html) or through your Linux distributions package manager. Once installed you can run this command to scan your subnet to find the Raspberry Pi's IPv4 address.
 
-```nmap -n -T3 -sP <CIDR network address>```
+```nmap -n -T3 -sP 192.168.137.0/24```
 
 Be sure to insert the correct CIDR network address for the subnet that you are using for your connection. Once the command finishs it should have your Raspberry Pi's current IPv4 address somewhere in the output. You can then use an SSH client of you choice to connect to it. The default user is "pi" and the default password is "raspberry". More methods of IP address discovery can be found in the official [documentation](https://www.raspberrypi.org/documentation/remote-access/ip-address.md) from the Raspberry Pi foundation.
 
 The caveat with this approach is that the IPv4 address of the Raspberry Pi might change when the DHCP lease from your controlling machine expires. You will then have to action this process again to find the new IPv4 address of the Raspberry Pi in order to make a successful connection.
 
 ### Manual Networking Configuration
-To maintain a level of consistency when interacting with your Raspberry Pi you can preset a static IPv4 address to the Raspberry Pi's Ethernet interface. This will allow you to use the same IPv4 address consistently.
+To maintain a level of consistency when interacting with your Raspberry Pi you can preset a static IPv4 address to the Raspberry Pi's Ethernet interface. This will allow you to use the same IPv4 address consistently. The file that we will be targeting when setting up static network configurations in the Raspberry Pi is: **/etc/network/interfaces**. With this file you can specify a configuration similar to the one below which will allow your Pi's Ethernet interface to maintain a static IP address.
+
+```
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
+allow-hotplug eth0
+iface eth0 inet static
+  address 192.168.137.10
+  netmask 255.255.255.0
+  broadcast 192.168.137.255
+  network 192.168.137.0
+  gateway 192.168.137.1
+  dns-nameservers 192.168.137.1
+```
+
+Be sure to substitute the correct addressing information for your setup to allow the Raspberry Pi to your controlling machine. At this point you should be able to connect your Raspberry Pi and SSH into it. If you are using the typical OpenSSH client a connection can be made using the following:
+
+```
+ssh -C pi@192.168.137.10
+```
+
+If all goes well you should be greeted with an SSH fingerprint confirmation to which you can accept and then type in the password at the prompt. Afterwards you will see the BASH prompt, ready for commands.
 
 ## 4. PCB Setup
+The PCB for this project was designed by myself and the fabrication was outsourced to a local creation space for etching. I can't provide any specifics on the etching of the board, however using Fritzing file found under this project tree you can export the schematics in a Gerber format and from there send it to a local hackerspace or attempt to etch it yourself. This section will assume that you have had you board etched without any issues and instead will focus on the assembly of the components required to make a connection to the Raspberry Pi and the sensor board.
 
-## 5. PCB Soldering 
+### 5. PCB Soldering 
 
 ## 6. I2C programming
