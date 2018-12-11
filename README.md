@@ -1,4 +1,4 @@
-# Hifbox wearable
+# Hifbox Wearable
 
 ## Introduction
 This is the project page for the "Help, I've Fallen" (HIF) Box Wearable. This repository will contain information regarding the project's architecture, design, and source code required to interface with the wearable's sensors. This project will use a Raspberry Pi B+ and NXP's 9-DOF Breakout board.
